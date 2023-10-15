@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('liver_column', function (Blueprint $table) {
-            $table->string('id',36)->unique()->comment('liver ID');
+        Schema::create('liver', function (Blueprint $table) {
+            $table->string('id',36)->unique()->comment('liver uuid');
             $table->string('name',36)->comment('liver 名稱');
-            $table->timestamp('birthday')->comment('生日');
+            $table->dateTime('birthday')->comment('生日');
             $table->string('color',36)->comment('代表色');
             $table->string('created_by',36)->comment('建立人員');
-            $table->timestamp('created_at')->comment('建立時間');
+            $table->dateTime('created_at')->comment('建立時間');
             $table->string('updated_by',36)->comment('更新人員');
-            $table->timestamp('updated_at')->comment('更新時間');
+            $table->dateTime('updated_at')->comment('更新時間');
             $table->softDeletes()->comment('資料狀態');
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('liver_column');
+        Schema::dropIfExists('liver');
     }
 };
